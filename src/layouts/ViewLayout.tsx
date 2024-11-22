@@ -3,11 +3,10 @@ import { AiFillStar, AiFillSetting } from "react-icons/ai";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-white min-h-screen max-w-xs">
-      <div className="">{children}</div>
+    <div className="bg-white min-h-screen w-full max-w-full mx-auto relative">
+      <div className="overflow-y-auto pb-20">{children}</div>
 
-      {/* Bottom Navigation */}
-      <div className="w-full bg-slate-300 text-white p-4 flex justify-around items-center">
+      <div className="w-full bg-slate-300 text-white p-4 flex justify-around items-center fixed bottom-0 left-0">
         <ButtonNavigate
           title="Trending"
           icon={<AiFillStar className="text-xl" />}
