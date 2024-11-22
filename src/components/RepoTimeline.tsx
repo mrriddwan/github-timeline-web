@@ -36,35 +36,39 @@ function RepoTimeline() {
   return (
     <Fragment>
       <div className="bg-slate-200 p-4 justify-center">
-        <h1 className="text-2xl font-bold text-center mb-4 text-black">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 text-black">
           Trending Repos
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row flex-wrap gap-4 justify-center">
+      <div className="flex flex-col md:flex-row flex-wrap gap-4 justify-center overflow-y-auto max-h-screen">
         {repoQuery.isLoading && <p>Loading...</p>}
         {repoQuery.isError && <p>Error loading repositories.</p>}
         {repoQuery.data?.data?.items?.map((repo: RepoInterface) => (
           <div
             key={repo.name}
-            className="w-full sm:max-w-full md:w-1/2 lg:w-1/3 bg-white rounded-lg shadow-md p-4 flex items-start space-x-4"
+            className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8 flex items-start space-x-4"
           >
             <div className="max-w-full">
-              <h2 className="text-lg font-semibold text-black text-left">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-black text-left">
                 {repo.name ?? "No name"}
               </h2>
-              <p className="text-sm text-gray-600 mt-1 mb-2 text-ellipsis overflow-hidden max-h-20 text-left">
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-1 mb-2 text-ellipsis overflow-hidden max-h-20 text-left">
                 {repo.description}
               </p>
-              <div className="flex items-center justify-between text-sm text-gray-500">
+              <div className="flex items-center justify-between text-sm sm:text-base md:text-lg text-gray-500">
                 <span className="flex items-center">
                   <img
                     src={repo.owner.avatar_url}
                     alt={`${repo.owner.login} avatar`}
-                    className="w-12 h-12 rounded-full"
+                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full"
                   />
-                  <p className="ml-2">{repo.owner.login}</p>
+                  <p className="ml-2 text-xs sm:text-sm md:text-base">
+                    {repo.owner.login}
+                  </p>
                 </span>
-                <span>⭐ {repo.stargazers_count}</span>
+                <span className="text-xs sm:text-sm md:text-base">
+                  ⭐ {repo.stargazers_count}
+                </span>
               </div>
             </div>
           </div>
