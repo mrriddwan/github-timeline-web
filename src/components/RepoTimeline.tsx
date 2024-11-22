@@ -40,13 +40,13 @@ function RepoTimeline() {
           Trending Repos
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row flex-wrap gap-4 justify-center overflow-y-auto max-h-screen">
+      <div className="flex flex-col md:flex-row flex-wrap gap-4 justify-center overflow-y-auto max-h-screen px-3 py-3">
         {repoQuery.isLoading && <p>Loading...</p>}
         {repoQuery.isError && <p>Error loading repositories.</p>}
         {repoQuery.data?.data?.items?.map((repo: RepoInterface) => (
           <div
             key={repo.name}
-            className="w-full sm:w-80 md:w-96 bg-white rounded-lg shadow-md p-4 sm:p-6 md:p-8 flex items-start space-x-4"
+            className="w-full max-w-full bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 flex items-start space-x-4"
           >
             <div className="max-w-full">
               <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-black text-left">
@@ -55,7 +55,7 @@ function RepoTimeline() {
               <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-1 mb-2 text-ellipsis overflow-hidden max-h-20 text-left">
                 {repo.description}
               </p>
-              <div className="flex items-center justify-between text-sm sm:text-base md:text-lg text-gray-500">
+              <div className="flex items-center my-5 justify-between text-sm sm:text-base md:text-lg text-gray-500">
                 <span className="flex items-center">
                   <img
                     src={repo.owner.avatar_url}
